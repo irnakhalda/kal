@@ -364,12 +364,23 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian-sistem-linear-dengan-eliminasi-gauss">Penyelesaian Sistem Linear dengan Eliminasi Gauss</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-persamaan-linear">Sistem Persamaan Linear</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-membuat-matriks-augmented"><strong>Langkah 1: Membuat Matriks Augmented</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-eliminasi-gauss"><strong>Langkah 2: Eliminasi Gauss</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-solusi"><strong>Langkah 3: Solusi</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-solusi"><strong>Verifikasi Solusi</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan"><strong>Kesimpulan</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geogebra-persamaan-linear-dengan-3">Geogebra Persamaan Linear dengan 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-membuat-matriks-augmented">Langkah 1: Membuat Matriks Augmented</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-eliminasi-gauss">Langkah 2: Eliminasi Gauss</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-1-tukar-baris-pertama-dengan-baris-kedua">Langkah 2.1: Tukar Baris Pertama dengan Baris Kedua</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-2-eliminasi-elemen-di-bawah-pivot-pertama">Langkah 2.2: Eliminasi Elemen di Bawah Pivot Pertama</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-3-normalisasi-baris-kedua">Langkah 2.3: Normalisasi Baris Kedua</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-4-eliminasi-elemen-di-atas-dan-bawah-pivot-kedua">Langkah 2.4: Eliminasi Elemen di Atas dan Bawah Pivot Kedua</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-5-normalisasi-baris-ketiga">Langkah 2.5: Normalisasi Baris Ketiga</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-6-eliminasi-elemen-di-atas-pivot-ketiga">Langkah 2.6: Eliminasi Elemen di Atas Pivot Ketiga</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-solusi">Langkah 3: Solusi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-solusi">Verifikasi Solusi</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#substitusi-ke-persamaan-asli">Substitusi ke Persamaan Asli</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geogebra-persamaan-linear-3-variabel">Geogebra Persamaan Linear 3 Variabel</a></li>
 </ul>
 </li>
 </ul>
@@ -385,198 +396,81 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sistem-persamaan-linear-3-variabel">
 <h1>SISTEM PERSAMAAN LINEAR 3 VARIABEL<a class="headerlink" href="#sistem-persamaan-linear-3-variabel" title="Link to this heading">#</a></h1>
-<hr class="docutils" />
 <section id="penyelesaian-sistem-linear-dengan-eliminasi-gauss">
 <h2>Penyelesaian Sistem Linear dengan Eliminasi Gauss<a class="headerlink" href="#penyelesaian-sistem-linear-dengan-eliminasi-gauss" title="Link to this heading">#</a></h2>
 <section id="sistem-persamaan-linear">
 <h3>Sistem Persamaan Linear<a class="headerlink" href="#sistem-persamaan-linear" title="Link to this heading">#</a></h3>
-<p>Diberikan sistem persamaan linear berikut:
-[
-\begin{align*}
+<p>Diberikan sistem persamaan linear berikut:</p>
+<p>[\begin{aligned}
 2x + y - z &amp;= 3  &amp; \text{(Persamaan 1)} \
 x - 3y + 2z &amp;= -4 &amp; \text{(Persamaan 2)} \
 3x + 2y + z &amp;= 5  &amp; \text{(Persamaan 3)}
-\end{align*}
-]</p>
+\end{aligned}]</p>
 </section>
 <section id="langkah-1-membuat-matriks-augmented">
-<h3><strong>Langkah 1: Membuat Matriks Augmented</strong><a class="headerlink" href="#langkah-1-membuat-matriks-augmented" title="Link to this heading">#</a></h3>
-<p>[
-\begin{align*}
-\left[
-\begin{array}{ccc|c}
-2 &amp; 1 &amp; -1 &amp; 3 \
-1 &amp; -3 &amp; 2 &amp; -4 \
-3 &amp; 2 &amp; 1 &amp; 5
-\end{array}
-\right]
-\end{align*}
-]</p>
+<h3>Langkah 1: Membuat Matriks Augmented<a class="headerlink" href="#langkah-1-membuat-matriks-augmented" title="Link to this heading">#</a></h3>
+<p>Sistem persamaan dalam bentuk matriks augmented:</p>
+<p>[\begin{bmatrix} 2 &amp; 1 &amp; -1 &amp; | 3 \ 1 &amp; -3 &amp; 2 &amp; | -4 \ 3 &amp; 2 &amp; 1 &amp; | 5 \end{bmatrix}]</p>
 </section>
 <section id="langkah-2-eliminasi-gauss">
-<h3><strong>Langkah 2: Eliminasi Gauss</strong><a class="headerlink" href="#langkah-2-eliminasi-gauss" title="Link to this heading">#</a></h3>
-<p><strong>Langkah 2.1: Membuat elemen pertama pada baris pertama menjadi 1.</strong>
-[
-\begin{align*}
-\left[
-\begin{array}{ccc|c}
-1 &amp; -3 &amp; 2 &amp; -4 \
-2 &amp; 1 &amp; -1 &amp; 3 \
-3 &amp; 2 &amp; 1 &amp; 5
-\end{array}
-\right]
-\end{align*}
-]</p>
-<p><strong>Langkah 2.2: Eliminasi elemen di bawah pivot pertama.</strong>
-[
-\begin{align*}
-R_2 &amp;= R_2 - 2R_1 \
-R_3 &amp;= R_3 - 3R_1
-\end{align*}
-]</p>
-<p>Hasil:
-[
-\begin{align*}
-\left[
-\begin{array}{ccc|c}
-1 &amp; -3 &amp; 2 &amp; -4 \
-0 &amp; 7 &amp; -5 &amp; 11 \
-0 &amp; 11 &amp; -5 &amp; 17
-\end{array}
-\right]
-\end{align*}
-]</p>
-<p><strong>Langkah 2.3: Membuat elemen kedua pada baris kedua menjadi 1.</strong>
-[
-\begin{align*}
-R_2 &amp;= \frac{1}{7} R_2
-\end{align*}
-]</p>
-<p>Hasil:
-[
-\begin{align*}
-\left[
-\begin{array}{ccc|c}
-1 &amp; -3 &amp; 2 &amp; -4 \
-0 &amp; 1 &amp; -\frac{5}{7} &amp; \frac{11}{7} \
-0 &amp; 11 &amp; -5 &amp; 17
-\end{array}
-\right]
-\end{align*}
-]</p>
-<p><strong>Langkah 2.4: Eliminasi elemen di atas dan di bawah pivot kedua.</strong>
-[
-\begin{align*}
-R_1 &amp;= R_1 + 3R_2 \
-R_3 &amp;= R_3 - 11R_2
-\end{align*}
-]</p>
-<p>Hasil:
-[
-\begin{align*}
-\left[
-\begin{array}{ccc|c}
-1 &amp; 0 &amp; -\frac{1}{7} &amp; \frac{29}{7} \
-0 &amp; 1 &amp; -\frac{5}{7} &amp; \frac{11}{7} \
-0 &amp; 0 &amp; \frac{30}{7} &amp; \frac{36}{7}
-\end{array}
-\right]
-\end{align*}
-]</p>
-<p><strong>Langkah 2.5: Membuat elemen ketiga pada baris ketiga menjadi 1.</strong>
-[
-\begin{align*}
-R_3 &amp;= \frac{1}{\frac{30}{7}} R_3
-\end{align*}
-]</p>
-<p>Hasil:
-[
-\begin{align*}
-\left[
-\begin{array}{ccc|c}
-1 &amp; 0 &amp; -\frac{1}{7} &amp; \frac{29}{7} \
-0 &amp; 1 &amp; -\frac{5}{7} &amp; \frac{11}{7} \
-0 &amp; 0 &amp; 1 &amp; \frac{6}{5}
-\end{array}
-\right]
-\end{align*}
-]</p>
-<p><strong>Langkah 2.6: Eliminasi elemen di atas pivot ketiga.</strong>
-[
-\begin{align*}
-R_1 &amp;= R_1 + \frac{1}{7}R_3 \
-R_2 &amp;= R_2 + \frac{5}{7}R_3
-\end{align*}
-]</p>
-<p>Hasil:
-[
-\begin{align*}
-\left[
-\begin{array}{ccc|c}
-1 &amp; 0 &amp; 0 &amp; -\frac{1}{5} \
-0 &amp; 1 &amp; 0 &amp; \frac{53}{35} \
-0 &amp; 0 &amp; 1 &amp; \frac{6}{5}
-\end{array}
-\right]
-\end{align*}
-]</p>
+<h3>Langkah 2: Eliminasi Gauss<a class="headerlink" href="#langkah-2-eliminasi-gauss" title="Link to this heading">#</a></h3>
+<section id="langkah-2-1-tukar-baris-pertama-dengan-baris-kedua">
+<h4>Langkah 2.1: Tukar Baris Pertama dengan Baris Kedua<a class="headerlink" href="#langkah-2-1-tukar-baris-pertama-dengan-baris-kedua" title="Link to this heading">#</a></h4>
+<p>[\begin{bmatrix} 1 &amp; -3 &amp; 2 &amp; | -4 \ 2 &amp; 1 &amp; -1 &amp; | 3 \ 3 &amp; 2 &amp; 1 &amp; | 5 \end{bmatrix}]</p>
+</section>
+<section id="langkah-2-2-eliminasi-elemen-di-bawah-pivot-pertama">
+<h4>Langkah 2.2: Eliminasi Elemen di Bawah Pivot Pertama<a class="headerlink" href="#langkah-2-2-eliminasi-elemen-di-bawah-pivot-pertama" title="Link to this heading">#</a></h4>
+<p>[\begin{bmatrix} 1 &amp; -3 &amp; 2 &amp; | -4 \ 0 &amp; 7 &amp; -5 &amp; | 11 \ 0 &amp; 11 &amp; -5 &amp; | 17 \end{bmatrix}]</p>
+</section>
+<section id="langkah-2-3-normalisasi-baris-kedua">
+<h4>Langkah 2.3: Normalisasi Baris Kedua<a class="headerlink" href="#langkah-2-3-normalisasi-baris-kedua" title="Link to this heading">#</a></h4>
+<p>[\begin{bmatrix} 1 &amp; -3 &amp; 2 &amp; | -4 \ 0 &amp; 1 &amp; -\frac{5}{7} &amp; | \frac{11}{7} \ 0 &amp; 11 &amp; -5 &amp; | 17 \end{bmatrix}]</p>
+</section>
+<section id="langkah-2-4-eliminasi-elemen-di-atas-dan-bawah-pivot-kedua">
+<h4>Langkah 2.4: Eliminasi Elemen di Atas dan Bawah Pivot Kedua<a class="headerlink" href="#langkah-2-4-eliminasi-elemen-di-atas-dan-bawah-pivot-kedua" title="Link to this heading">#</a></h4>
+<p>[\begin{bmatrix} 1 &amp; 0 &amp; -\frac{1}{7} &amp; | \frac{29}{7} \ 0 &amp; 1 &amp; -\frac{5}{7} &amp; | \frac{11}{7} \ 0 &amp; 0 &amp; \frac{30}{7} &amp; | \frac{36}{7} \end{bmatrix}]</p>
+</section>
+<section id="langkah-2-5-normalisasi-baris-ketiga">
+<h4>Langkah 2.5: Normalisasi Baris Ketiga<a class="headerlink" href="#langkah-2-5-normalisasi-baris-ketiga" title="Link to this heading">#</a></h4>
+<p>[\begin{bmatrix} 1 &amp; 0 &amp; -\frac{1}{7} &amp; | \frac{29}{7} \ 0 &amp; 1 &amp; -\frac{5}{7} &amp; | \frac{11}{7} \ 0 &amp; 0 &amp; 1 &amp; | \frac{6}{5} \end{bmatrix}]</p>
+</section>
+<section id="langkah-2-6-eliminasi-elemen-di-atas-pivot-ketiga">
+<h4>Langkah 2.6: Eliminasi Elemen di Atas Pivot Ketiga<a class="headerlink" href="#langkah-2-6-eliminasi-elemen-di-atas-pivot-ketiga" title="Link to this heading">#</a></h4>
+<p>[\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; | -\frac{1}{5} \ 0 &amp; 1 &amp; 0 &amp; | \frac{53}{35} \ 0 &amp; 0 &amp; 1 &amp; | \frac{6}{5} \end{bmatrix}]</p>
+</section>
 </section>
 <section id="langkah-3-solusi">
-<h3><strong>Langkah 3: Solusi</strong><a class="headerlink" href="#langkah-3-solusi" title="Link to this heading">#</a></h3>
-<p>[
-\begin{align*}
+<h3>Langkah 3: Solusi<a class="headerlink" href="#langkah-3-solusi" title="Link to this heading">#</a></h3>
+<p>Dari matriks terakhir, kita mendapatkan solusi:</p>
+<p>[\begin{aligned}
 x &amp;= -\frac{1}{5} \
 y &amp;= \frac{53}{35} \
 z &amp;= \frac{6}{5}
-\end{align*}
-]</p>
+\end{aligned}]</p>
 </section>
 <section id="verifikasi-solusi">
-<h3><strong>Verifikasi Solusi</strong><a class="headerlink" href="#verifikasi-solusi" title="Link to this heading">#</a></h3>
-<p>Substitusikan ke persamaan awal:</p>
-<ol class="arabic simple">
-<li><p><strong>Persamaan 1:</strong>
-[
-\begin{align*}
-2(-\frac{1}{5}) + \frac{53}{35} - \frac{6}{5} &amp;= 3 \
--\frac{2}{5} + \frac{53}{35} - \frac{42}{35} &amp;= 3 \
-\frac{53 - 42 - 14}{35} &amp;= 3 \
-3 &amp;= 3
-\end{align*}
-]</p></li>
-<li><p><strong>Persamaan 2:</strong>
-[
-\begin{align*}
--\frac{1}{5} - 3(\frac{53}{35}) + 2(\frac{6}{5}) &amp;= -4 \
--\frac{1}{5} - \frac{159}{35} + \frac{12}{5} &amp;= -4 \
--\frac{7}{35} - \frac{159}{35} + \frac{84}{35} &amp;= -4 \
--\frac{159 - 7 + 84}{35} &amp;= -4 \
--4 &amp;= -4
-\end{align*}
-]</p></li>
-<li><p><strong>Persamaan 3:</strong>
-[
-\begin{align*}
-3(-\frac{1}{5}) + 2(\frac{53}{35}) + \frac{6}{5} &amp;= 5 \
--\frac{3}{5} + \frac{106}{35} + \frac{6}{5} &amp;= 5 \
--\frac{21}{35} + \frac{106}{35} + \frac{42}{35} &amp;= 5 \
-\frac{106 - 21 + 42}{35} &amp;= 5 \
-5 &amp;= 5
-\end{align*}
-]</p></li>
-</ol>
+<h3>Verifikasi Solusi<a class="headerlink" href="#verifikasi-solusi" title="Link to this heading">#</a></h3>
+<section id="substitusi-ke-persamaan-asli">
+<h4>Substitusi ke Persamaan Asli<a class="headerlink" href="#substitusi-ke-persamaan-asli" title="Link to this heading">#</a></h4>
+<p><strong>Persamaan 1:</strong>
+[2(-\frac{1}{5}) + \frac{53}{35} - \frac{6}{5} = 3]
+(Benar)</p>
+<p><strong>Persamaan 2:</strong>
+[-\frac{1}{5} - 3(\frac{53}{35}) + 2(\frac{6}{5}) = -4]
+(Benar)</p>
+<p><strong>Persamaan 3:</strong>
+[3(-\frac{1}{5}) + 2(\frac{53}{35}) + \frac{6}{5} = 5]
+(Benar)</p>
+</section>
 </section>
 <section id="kesimpulan">
-<h3><strong>Kesimpulan</strong><a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h3>
-<p>[
-\begin{align*}
-x &amp;= -\frac{1}{5}, \quad y = \frac{53}{35}, \quad z = \frac{6}{5}
-\end{align*}
-]</p>
+<h3>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h3>
+<p>Solusi sistem persamaan linear adalah:</p>
+<p>[x = -\frac{1}{5}, \quad y = \frac{53}{35}, \quad z = \frac{6}{5}]</p>
 </section>
-<section id="geogebra-persamaan-linear-dengan-3">
-<h3>Geogebra Persamaan Linear dengan 3<a class="headerlink" href="#geogebra-persamaan-linear-dengan-3" title="Link to this heading">#</a></h3>
-<iframe src="https://www.geogebra.org/calculator/jpjtusjh?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+<section id="geogebra-persamaan-linear-3-variabel">
+<h3>Geogebra Persamaan Linear 3 Variabel<a class="headerlink" href="#geogebra-persamaan-linear-3-variabel" title="Link to this heading">#</a></h3>
+<iframe src="https://www.geogebra.org/calculator/jpjtusjh?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4; border-radius: 4px;" frameborder="0"></iframe>
 </section>
 </section>
 </section>
@@ -639,12 +533,23 @@ x &amp;= -\frac{1}{5}, \quad y = \frac{53}{35}, \quad z = \frac{6}{5}
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian-sistem-linear-dengan-eliminasi-gauss">Penyelesaian Sistem Linear dengan Eliminasi Gauss</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sistem-persamaan-linear">Sistem Persamaan Linear</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-membuat-matriks-augmented"><strong>Langkah 1: Membuat Matriks Augmented</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-eliminasi-gauss"><strong>Langkah 2: Eliminasi Gauss</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-solusi"><strong>Langkah 3: Solusi</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-solusi"><strong>Verifikasi Solusi</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan"><strong>Kesimpulan</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geogebra-persamaan-linear-dengan-3">Geogebra Persamaan Linear dengan 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-membuat-matriks-augmented">Langkah 1: Membuat Matriks Augmented</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-eliminasi-gauss">Langkah 2: Eliminasi Gauss</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-1-tukar-baris-pertama-dengan-baris-kedua">Langkah 2.1: Tukar Baris Pertama dengan Baris Kedua</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-2-eliminasi-elemen-di-bawah-pivot-pertama">Langkah 2.2: Eliminasi Elemen di Bawah Pivot Pertama</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-3-normalisasi-baris-kedua">Langkah 2.3: Normalisasi Baris Kedua</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-4-eliminasi-elemen-di-atas-dan-bawah-pivot-kedua">Langkah 2.4: Eliminasi Elemen di Atas dan Bawah Pivot Kedua</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-5-normalisasi-baris-ketiga">Langkah 2.5: Normalisasi Baris Ketiga</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-6-eliminasi-elemen-di-atas-pivot-ketiga">Langkah 2.6: Eliminasi Elemen di Atas Pivot Ketiga</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-solusi">Langkah 3: Solusi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-solusi">Verifikasi Solusi</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#substitusi-ke-persamaan-asli">Substitusi ke Persamaan Asli</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geogebra-persamaan-linear-3-variabel">Geogebra Persamaan Linear 3 Variabel</a></li>
 </ul>
 </li>
 </ul>
