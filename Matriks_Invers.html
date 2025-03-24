@@ -1,0 +1,842 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>MATRIKS INVERS &#8212; Komputasi Aljabar Linear B</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Matriks_Invers';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="SISTEM PERSAMAAN LINEAR 3 VARIABEL" href="sistem_persamaan_3variabel.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/irnaa.jpg" class="logo__image only-light" alt="Komputasi Aljabar Linear B - Home"/>
+    <img src="_static/irnaa.jpg" class="logo__image only-dark pst-js-only" alt="Komputasi Aljabar Linear B - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to materi Komputasi Aljabar Linear
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sistem_persamaan_3variabel.html">SISTEM PERSAMAAN LINEAR 3 VARIABEL</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">MATRIKS INVERS</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FMatriks_Invers.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Matriks_Invers.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MATRIKS INVERS</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-matriks-invers">Definisi Matriks Invers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syarat-suatu-matriks-memiliki-invers">Syarat Suatu Matriks Memiliki Invers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-3-persamaan">MATRIK 3 PERSAMAAN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diketahui-matriks-a">1. Diketahui Matriks <span class="math notranslate nohighlight">\({A}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membentuk-matriks-augmented-a-i">2. Membentuk Matriks Augmented [A | I]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-elemen-1-1-menjadi-1">3. Membuat Elemen <span class="math notranslate nohighlight">\((1,1)\)</span> Menjadi 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-elemen-di-kolom-1-baris-2-dan-3-menjadi-0">4. Membuat Elemen di Kolom 1 (Baris 2 dan 3) Menjadi 0</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-menjadikan-elemen-2-1">Langkah 1: Menjadikan Elemen (2,1)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-menjadikan-elemen-3-1-0">Langkah 2: Menjadikan Elemen (3,1) = 0</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-elemen-2-2-menjadi-1">5. Membuat Elemen <span class="math notranslate nohighlight">\((2,2)\)</span> Menjadi 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghilangkan-elemen-di-kolom-2-baris-1-dan-3">6. Menghilangkan Elemen di Kolom 2 (Baris 1 dan 3)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-menghitung-baris-1-baru">Langkah 1: Menghitung Baris 1 Baru</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-perhitungan-baris-3-baru">Langkah 2: Perhitungan Baris 3 Baru</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-elemen-3-3-menjadi-1">7. Membuat Elemen (3,3) Menjadi 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghilangkan-elemen-di-kolom-3-baris-1-dan-2">8. Menghilangkan Elemen di Kolom 3 (Baris 1 dan 2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Langkah 1: Menghitung Baris 1 Baru</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-menghitung-baris-2-baru">Langkah 2: Menghitung Baris 2 Baru</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <hr class="docutils" />
+<p>title: MATRIKS INVERS</p>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="matriks-invers">
+<h1>MATRIKS INVERS<a class="headerlink" href="#matriks-invers" title="Link to this heading">#</a></h1>
+<section id="definisi-matriks-invers">
+<h2>Definisi Matriks Invers<a class="headerlink" href="#definisi-matriks-invers" title="Link to this heading">#</a></h2>
+<p>Matriks invers adalah matriks yang jika dikalikan dengan matriks aslinya, menghasilkan matriks identitas. Dengan kata lain, matriks invers berfungsi sebagai kebalikan dari suatu matriks dalam operasi perkalian matriks.</p>
+<p>Secara matematis, jika <span class="math notranslate nohighlight">\({A}\)</span> adalah sebuah matriks persegi, maka inversnya, yang ditulis sebagai <span class="math notranslate nohighlight">\(A^{-1}\)</span>, memenuhi persamaan:</p>
+<div class="math notranslate nohighlight">
+\[
+A \times A^{-1}=A^{-1} \times A=I
+\]</div>
+<p>di mana <span class="math notranslate nohighlight">\(I\)</span> adalah matriks identitas, yaitu matriks dengan angka 1 di diagonal utama dan <span class="math notranslate nohighlight">\(\mathbf{0}\)</span> di tempat lainnya. Tidak semua matriks memiliki invers; hanya matriks persegi yang determinannya tidak nol yang memiliki invers.
+Contoh matriks identitas untuk ukuran <span class="math notranslate nohighlight">\(3 \times 3\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+I=\left[\begin{array}{lll}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\end{split}\]</div>
+</section>
+<section id="syarat-suatu-matriks-memiliki-invers">
+<h2>Syarat Suatu Matriks Memiliki Invers<a class="headerlink" href="#syarat-suatu-matriks-memiliki-invers" title="Link to this heading">#</a></h2>
+<p>Suatu matriks <span class="math notranslate nohighlight">\(A\)</span> bisa memiliki invers <span class="math notranslate nohighlight">\(A^{-1}\)</span> jika memenuhi dua syarat berikut:</p>
+<ol class="arabic simple">
+<li><p>Matriks harus berbentuk persegi <span class="math notranslate nohighlight">\(\rightarrow\)</span> jumlah baris harus sama dengan jumlah kolom.</p></li>
+<li><p>Determinan tidak boleh nol <span class="math notranslate nohighlight">\(\rightarrow|A| \neq 0\)</span>. Jika determinannya nol <span class="math notranslate nohighlight">\((|A|=0)\)</span>, maka matriks disebut singular dan tidak memiliki invers.</p></li>
+</ol>
+</section>
+<section id="matrik-3-persamaan">
+<h2>MATRIK 3 PERSAMAAN<a class="headerlink" href="#matrik-3-persamaan" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{r}2 x_1+3 x_2-x_3=2 \\ x_1-x_2+4 x_3=1 \\ 3 x_1+2 x_2+5 x_3=3\end{array}
+\end{split}\]</div>
+<section id="diketahui-matriks-a">
+<h3>1. Diketahui Matriks <span class="math notranslate nohighlight">\({A}\)</span><a class="headerlink" href="#diketahui-matriks-a" title="Link to this heading">#</a></h3>
+<p>Kita memiliki matriks <span class="math notranslate nohighlight">\(A\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A=\left[\begin{array}{ccc}2 &amp; 3 &amp; -1 \\ 
+1 &amp; -1 &amp; 4 \\ 
+3 &amp; 2 &amp; 5\end{array}\right]
+\end{split}\]</div>
+</section>
+<section id="membentuk-matriks-augmented-a-i">
+<h3>2. Membentuk Matriks Augmented [A | I]<a class="headerlink" href="#membentuk-matriks-augmented-a-i" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+[A \mid I]=\left[\begin{array}{ccc|ccc}2 &amp; 3 &amp; -1 &amp; \mid 1 &amp; 0 &amp; 0 \\ 1 &amp; -1 &amp; 4 &amp; \mid 0 &amp; 1 &amp; 0 \\ 3 &amp; 2 &amp; 5 &amp; \mid 0 &amp; 0 &amp; 1\end{array}\right]
+\end{split}\]</div>
+<p>Tujuan: Kita harus mengubah bagian kiri menjadi identitas <span class="math notranslate nohighlight">\(I\)</span>, dan bagian kanan akan menjadi invers <span class="math notranslate nohighlight">\(A^{-1}\)</span>.</p>
+</section>
+<section id="membuat-elemen-1-1-menjadi-1">
+<h3>3. Membuat Elemen <span class="math notranslate nohighlight">\((1,1)\)</span> Menjadi 1<a class="headerlink" href="#membuat-elemen-1-1-menjadi-1" title="Link to this heading">#</a></h3>
+<p>Saat ini, elemen pertama <span class="math notranslate nohighlight">\((1,1)\)</span> adalah 2, jadi kita bagi seluruh baris 1 dengan 2:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{gathered}R_1 \rightarrow \frac{1}{2} R_1 \\ {\left[\begin{array}{cccccc}1 &amp; \frac{3}{2} &amp; -\frac{1}{2} &amp; \left\lvert\, \frac{1}{2}\right. &amp; 0 &amp; 0 \\ 1 &amp; -1 &amp; 4 &amp; \mid 0 &amp; 1 &amp; 0 \\ 3 &amp; 2 &amp; 5 &amp; \mid 0 &amp; 0 &amp; 1\end{array}\right]}\end{gathered}
+\end{split}\]</div>
+</section>
+<section id="membuat-elemen-di-kolom-1-baris-2-dan-3-menjadi-0">
+<h3>4. Membuat Elemen di Kolom 1 (Baris 2 dan 3) Menjadi 0<a class="headerlink" href="#membuat-elemen-di-kolom-1-baris-2-dan-3-menjadi-0" title="Link to this heading">#</a></h3>
+<p>Kita buat elemen <span class="math notranslate nohighlight">\((2,1)\)</span> dan <span class="math notranslate nohighlight">\((3,1)\)</span> menjadi 0.</p>
+<ul class="simple">
+<li><p>Baris <span class="math notranslate nohighlight">\(2 \rightarrow R_2=R_2-R_1\)</span></p></li>
+<li><p>Baris <span class="math notranslate nohighlight">\(3 \rightarrow R_3=R_3-3 R_1\)</span></p></li>
+</ul>
+<section id="langkah-1-menjadikan-elemen-2-1">
+<h4>Langkah 1: Menjadikan Elemen (2,1)<a class="headerlink" href="#langkah-1-menjadikan-elemen-2-1" title="Link to this heading">#</a></h4>
+<p>Elemen ( 2,1 ) saat ini adalah 1.
+Untuk mengubahnya menjadi 0, kita lakukan operasi baris:</p>
+<div class="math notranslate nohighlight">
+\[
+R_2=R_2-R_1
+\]</div>
+<p>Perhitungan Baris 2 Baru ( <span class="math notranslate nohighlight">\(\mathbf{R}_{\mathbf{2}}\)</span> )
+Penjelasan:
+Ambil baris kedua dikurangi baris pertama.</p>
+<p>\begin{array}{|l|l|l|l|}
+\hline Elemen &amp; Nilai Lama \left(R_2\right) &amp; Nilai R_1 &amp; Hasil Baru \left(R_2-R_1\right) \
+\hline(2,1) &amp; 1 &amp; 1 &amp; 1-1=0 \
+\hline(2,2) &amp; -1 &amp; \frac{3}{2} &amp; -1-\frac{3}{2}=-\frac{2}{2}-\frac{3}{2}=-\frac{5}{2} \
+\hline(2,3) &amp; 4 &amp; -\frac{1}{2} &amp; 4-\left(-\frac{1}{2}\right)=4+\frac{1}{2}=\frac{8}{2}+\frac{1}{2}=\frac{9}{2} \
+\hline(2,4) &amp; 0 &amp; \frac{1}{2} &amp; 0-\frac{1}{2}=-\frac{1}{2} \
+\hline(2,5) &amp; 1 &amp; 0 &amp; 1-0=1 \
+\hline(2,6) &amp; 0 &amp; 0 &amp; 0-0=0 \
+\hline
+\end{array}</p>
+<p>Hasil baris 2 baru:
+$<span class="math notranslate nohighlight">\(
+\left(0,-\frac{5}{2}, \frac{9}{2},-\frac{1}{2}, 1,0\right)
+\)</span>$</p>
+</section>
+<section id="langkah-2-menjadikan-elemen-3-1-0">
+<h4>Langkah 2: Menjadikan Elemen (3,1) = 0<a class="headerlink" href="#langkah-2-menjadikan-elemen-3-1-0" title="Link to this heading">#</a></h4>
+<p>Elemen ( 3,1 ) saat ini adalah 3.
+Untuk mengubahnya menjadi 0, kita lakukan operasi baris:</p>
+<div class="math notranslate nohighlight">
+\[
+R_3=R_3-3 R_1
+\]</div>
+<p>Perhitungan Baris 3 Baru ( <span class="math notranslate nohighlight">\(\mathbf{R}_3\)</span> )
+Setiap elemen baris <span class="math notranslate nohighlight">\(\mathbf{3}\)</span> dikurangi <span class="math notranslate nohighlight">\(\mathbf{3 \times}\)</span> baris 1 .</p>
+<p>\begin{array}{|l|l|l|l|}
+\hline Elemen &amp; Nilai Lama \left(R_3\right) &amp; 3 \times R_1 &amp; Hasil Baru \left(R_3-3 R_1\right) \
+\hline(3,1) &amp; 3 &amp; 3 \times 1=3 &amp; 3-3=0 \
+\hline(3,2) &amp; 2 &amp; 3 \times \frac{3}{2}=\frac{9}{2}&amp; 2-\frac{9}{2}=\frac{4}{2}-\frac{9}{2}=-\frac{5}{2}\
+\hline(3,3) &amp; 5 &amp; 3 \times-\frac{1}{2}=-\frac{3}{2}&amp; 5-\left(-\frac{3}{2}\right)=5+\frac{3}{2}=\frac{10}{2}+\frac{3}{2}=\frac{13}{2}\
+\hline(3,4) &amp; 0 &amp; 3 \times \frac{1}{2}=\frac{3}{2}&amp; 0-\frac{3}{2}=-\frac{3}{2}\
+\hline(3,5) &amp; 0 &amp; 3 \times 0=0 &amp; 0-0=0 \
+\hline(3,6) &amp; 1 &amp; 3 \times 0=0 &amp; 1-0=1 \
+\hline
+\end{array}</p>
+<p>Hasil baris 3 baru:
+$<span class="math notranslate nohighlight">\(
+\left(0,-\frac{5}{2}, \frac{13}{2},-\frac{3}{2}, 0,1\right)
+\)</span>$</p>
+<p>Hasil matriks setelah eliminasi:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{ccc|ccc}1 &amp; \frac{3}{2} &amp; -\frac{1}{2} &amp; \frac{1}{2} &amp; 0 &amp; 0 \\ 0 &amp; -\frac{5}{2} &amp; \frac{9}{2} &amp; -\frac{1}{2} &amp; 1 &amp; 0 \\ 0 &amp; -\frac{5}{2} &amp; \frac{13}{2} &amp; -\frac{3}{2} &amp; 0 &amp; 1\end{array}\right]
+\end{split}\]</div>
+</section>
+</section>
+<section id="membuat-elemen-2-2-menjadi-1">
+<h3>5. Membuat Elemen <span class="math notranslate nohighlight">\((2,2)\)</span> Menjadi 1<a class="headerlink" href="#membuat-elemen-2-2-menjadi-1" title="Link to this heading">#</a></h3>
+<p>Saat ini, elemen <span class="math notranslate nohighlight">\((2,2)\)</span> adalah <span class="math notranslate nohighlight">\(-\frac{5}{2}\)</span>. Untuk menjadikannya 1 , kita bagi baris 2 dengan <span class="math notranslate nohighlight">\(-\frac{5}{2}\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+R_2 \rightarrow \frac{2}{-5} R_2
+\]</div>
+<p>Perhitungan Baris 2 Baru</p>
+<p>Kita lakukan pembagian untuk setiap elemen di baris 2:</p>
+<p>\begin{array}{|l|l|l|l|}
+\hline Elemen &amp; Nilai Lama \left(R_2\right) &amp; Dibagi -5 / 2 &amp; Hasil Baru \
+\hline(2,1) &amp; 0 &amp; 0 \div(-5 / 2) &amp; 0 \
+\hline(2,2) &amp; -\frac{5}{2} &amp; \left(-\frac{5}{2}\right) \div\left(-\frac{5}{2}\right) &amp; 1 \
+\hline(2,3) &amp; \frac{9}{2} &amp; \frac{9}{2} \div(-5 / 2) &amp; -\frac{9}{5} \
+\hline(2,4) &amp; -\frac{1}{2} &amp; -\frac{1}{2} \div(-5 / 2) &amp; \frac{1}{5} \
+\hline(2,5) &amp; 1 &amp; 1 \div(-5 / 2) &amp; -\frac{2}{5} \
+\hline(2,6) &amp; 0 &amp; 0 \div(-5 / 2) &amp; 0 \
+\hline
+\end{array}</p>
+<p>Hasil baris 2 setelah pembagian:</p>
+<div class="math notranslate nohighlight">
+\[
+\left(0,1,-\frac{9}{5}, \frac{1}{5},-\frac{2}{5}, 0\right)
+\]</div>
+<p>Hasilnya menjadi:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{ccc|ccc}
+1 &amp; \frac{3}{2} &amp; -\frac{1}{2} &amp; \frac{1}{2} &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; -\frac{9}{5} &amp; \frac{1}{5} &amp; -\frac{2}{5} &amp; 0 \\
+0 &amp; -\frac{5}{2} &amp; \frac{13}{2} &amp; -\frac{3}{2} &amp; 0 &amp; 1
+\end{array}\right]
+\end{split}\]</div>
+</section>
+<section id="menghilangkan-elemen-di-kolom-2-baris-1-dan-3">
+<h3>6. Menghilangkan Elemen di Kolom 2 (Baris 1 dan 3)<a class="headerlink" href="#menghilangkan-elemen-di-kolom-2-baris-1-dan-3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Baris <span class="math notranslate nohighlight">\(1 \rightarrow R_1=R_1-\frac{3}{2} R_2\)</span></p></li>
+<li><p>Baris <span class="math notranslate nohighlight">\(3 \rightarrow R_3=R_3+\frac{5}{2} R_2\)</span></p></li>
+</ul>
+<section id="langkah-1-menghitung-baris-1-baru">
+<h4>Langkah 1: Menghitung Baris 1 Baru<a class="headerlink" href="#langkah-1-menghitung-baris-1-baru" title="Link to this heading">#</a></h4>
+<p>Setiap elemen di baris 1 dikurangi <span class="math notranslate nohighlight">\(\frac{3}{2} \times\)</span> baris 2 .</p>
+<p>\begin{array}{|l|l|l|l|}
+\hline Elemen &amp; Nilai Lama \left(R_1\right) &amp; \frac{3}{2} \times R_2 &amp; Hasil Baru \left(R_1-\frac{3}{2} R_2\right) \
+\hline(1,1) &amp; 1 &amp; \frac{3}{2} \times 0=0 &amp; 1-0=1 \
+\hline(1,2) &amp; \frac{3}{2} &amp; \frac{3}{2} \times 1=\frac{3}{2} &amp; \frac{3}{2}-\frac{3}{2}=0 \
+\hline(1,3) &amp; -\frac{1}{2} &amp; \frac{3}{2} \times-\frac{9}{5}=-\frac{27}{10} &amp; -\frac{1}{2}-\left(-\frac{27}{10}\right)=-\frac{5}{10}+\frac{27}{10}=\frac{22}{10}=\frac{11}{5} \
+\hline(1,4) &amp; \frac{1}{2} &amp; \frac{3}{2} \times \frac{1}{5}=\frac{3}{10} &amp; \frac{1}{2}-\frac{3}{10}=\frac{5}{10}-\frac{3}{10}=\frac{2}{10}=\frac{1}{5} \
+\hline(1,5) &amp; 0 &amp; \frac{3}{2} \times-\frac{2}{5}=-\frac{6}{10} &amp; $0-\left(-\frac{6}{10}\right)=\frac{6}{10}=\frac{3}{5} \
+\hline(1,6) &amp; 0 &amp; \frac{3}{2} \times 0=0 &amp; 0-0=0 \
+\hline
+\end{array}</p>
+<p>Hasil baris 1 baru:</p>
+<div class="math notranslate nohighlight">
+\[
+\left(1,0, \frac{11}{5}, \frac{1}{5}, \frac{3}{5}, 0\right)
+\]</div>
+</section>
+<section id="langkah-2-perhitungan-baris-3-baru">
+<h4>Langkah 2: Perhitungan Baris 3 Baru<a class="headerlink" href="#langkah-2-perhitungan-baris-3-baru" title="Link to this heading">#</a></h4>
+<p>Setiap elemen di baris 3 ditambah <span class="math notranslate nohighlight">\(\frac{5}{2} \times\)</span> baris 2 .</p>
+<p>\begin{array}{|l|l|l|l|}
+\hline Elemen &amp; Nilai Lama \left(R_3\right) &amp; \frac{5}{2} \times R_2 &amp; Hasil Baru \left(R_3+\frac{5}{2} R_2\right) \
+\hline(3,1) &amp; 0 &amp; \frac{5}{2} \times 0=0 &amp; 0+0=0 \
+\hline(3,2) &amp; -\frac{5}{2} &amp; \frac{5}{2} \times 1=\frac{5}{2} &amp; -\frac{5}{2}+\frac{5}{2}=0 \
+\hline(3,3) &amp; \frac{13}{2} &amp; \frac{5}{2} \times-\frac{9}{5}=-\frac{45}{10}=-\frac{9}{2} &amp; \frac{13}{2}-\frac{9}{2}=\frac{4}{2}=2 \
+\hline(3,4) &amp; -\frac{3}{2} &amp; \frac{5}{2} \times \frac{1}{5}=\frac{5}{10}=\frac{1}{2} &amp; -\frac{3}{2}+\frac{1}{2}=-\frac{2}{2}=-1 \
+\hline(3,5) &amp; 0 &amp; \frac{5}{2} \times-\frac{2}{5}=-\frac{10}{10}=-1 &amp; 0-1=-1 \
+\hline(3,6) &amp; 1 &amp; \frac{5}{2} \times 0=0 &amp; 1+0=1 \
+\hline
+\end{array}</p>
+<p>Hasil baris 3 baru:
+$<span class="math notranslate nohighlight">\(
+(0,0,2 \mid-1,-1,1)
+\)</span>$</p>
+<p>Hasil matriks:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{ccc|ccc}1 &amp; 0 &amp; \frac{11}{5} &amp; \frac{1}{5} &amp; \frac{3}{5} &amp; 0 \\ 0 &amp; 1 &amp; -\frac{9}{5} &amp; \frac{1}{5} &amp; -\frac{2}{5} &amp; 0 \\ 0 &amp; 0 &amp; 2 &amp; -1 &amp; -1 &amp; 1\end{array}\right]
+\end{split}\]</div>
+</section>
+</section>
+<section id="membuat-elemen-3-3-menjadi-1">
+<h3>7. Membuat Elemen (3,3) Menjadi 1<a class="headerlink" href="#membuat-elemen-3-3-menjadi-1" title="Link to this heading">#</a></h3>
+<p>Agar elemen <span class="math notranslate nohighlight">\((3,3)\)</span> menjadi 1. kita bagi baris ketiga dengan <span class="math notranslate nohighlight">\({2}\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+R_3 \rightarrow \frac{1}{2} R_3
+\]</div>
+<p>Sekarang kita bagi setiap elemen di baris 3 dengan 2:</p>
+<p>\begin{array}{|l|l|l|l|}
+\hline Elemen &amp; Nilai Lama \left(R_3\right) &amp; Dibagi 2 &amp; Hasil Baru \
+\hline(3,1) &amp; 0 &amp; 0 \div 2 &amp; 0 \
+\hline(3,2) &amp; 0 &amp; 0 \div 2 &amp; 0 \
+\hline(3,3) &amp; 2 &amp; 2 \div 2 &amp; 1 \
+\hline(3,4) &amp; -1 &amp; -1 \div 2 &amp; -\frac{1}{2} \
+\hline(3,5) &amp; -1 &amp; -1 \div 2 &amp; -\frac{1}{2} \
+\hline(3,6) &amp; 1 &amp; 1 \div 2 &amp; \frac{1}{2} \
+\hline
+\end{array}</p>
+<p>Hasil baris 3 baru:
+$<span class="math notranslate nohighlight">\(
+\left(0,0,1,-\frac{1}{2},-\frac{1}{2}, \frac{1}{2}\right)
+\)</span>$</p>
+<p>Hasil matriks:
+$<span class="math notranslate nohighlight">\(
+\left[\begin{array}{ccc|ccc}1 &amp; 0 &amp; \frac{11}{5} &amp; \frac{1}{5} &amp; \frac{3}{5} &amp; 0 \\ 0 &amp; 1 &amp; -\frac{9}{5} &amp; \frac{1}{5} &amp; -\frac{2}{5} &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; -\frac{1}{2} &amp; -\frac{1}{2} &amp; \frac{1}{2}\end{array}\right]
+\)</span>$</p>
+</section>
+<section id="menghilangkan-elemen-di-kolom-3-baris-1-dan-2">
+<h3>8. Menghilangkan Elemen di Kolom 3 (Baris 1 dan 2)<a class="headerlink" href="#menghilangkan-elemen-di-kolom-3-baris-1-dan-2" title="Link to this heading">#</a></h3>
+<p>Sekarang kita ingin <strong>mengubah elemen (1,3) dan (2,3) menjadi 0</strong>, yaitu:</p>
+<ul class="simple">
+<li><p><strong>(1,3) = <span class="math notranslate nohighlight">\(\frac{11}{5}\)</span> → harus menjadi 0</strong></p></li>
+<li><p><strong>(2,3) = <span class="math notranslate nohighlight">\(-\frac{9}{5}\)</span> → harus menjadi 0</strong></p></li>
+</ul>
+<section id="id1">
+<h4>Langkah 1: Menghitung Baris 1 Baru<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>Operasi yang dilakukan:
+$<span class="math notranslate nohighlight">\(R_1=R_1-\frac{11}{5} R_3\)</span>$</p>
+<p>Sekarang kita hitung <strong>elemen-elemen baru pada <span class="math notranslate nohighlight">\(( R_1)\)</span></strong>:</p>
+<p>\begin{array}{|l|l|l|l|}
+\hline Elemen &amp; Nilai Lama \left(R_1\right) &amp; \frac{11}{5} \times R_3 &amp; Hasil Baru \left(R_1-\frac{11}{5} R_3\right) \
+\hline(1,1) &amp; 1 &amp; \frac{11}{5} \times 0=0 &amp; 1-0=1 \
+\hline(1,2) &amp; 0 &amp; \frac{11}{5} \times 0=0 &amp; 0-0=0 \
+\hline(1,3) &amp; \frac{11}{5} &amp; \frac{11}{5} \times 1=\frac{11}{5} &amp; \frac{11}{5}-\frac{11}{5}=0 \
+\hline(1,4) &amp; \frac{1}{5} &amp; \frac{11}{5} \times-\frac{1}{2}=-\frac{11}{10} &amp; \frac{1}{5}-\left(-\frac{11}{10}\right)=\frac{2}{10}+\frac{11}{10}=\frac{13}{10} \
+\hline(1,5) &amp; \frac{3}{5} &amp; \frac{11}{5} \times-\frac{1}{2}=-\frac{11}{10} &amp; \frac{3}{5}-\left(-\frac{11}{10}\right)=\frac{6}{10}+\frac{11}{10}=\frac{17}{10} \
+\hline(1,6) &amp; 0 &amp; \frac{11}{5} \times \frac{1}{2}=\frac{11}{10} &amp; $0-\frac{11}{10}=-\frac{11}{10} \
+\hline
+\end{array}</p>
+<p>Jadi, <strong>baris 1 baru</strong> menjadi:</p>
+<div class="math notranslate nohighlight">
+\[
+\left( 1, 0, 0, \frac{13}{10}, \frac{17}{10}, -\frac{11}{10} \right)
+\]</div>
+</section>
+<section id="langkah-2-menghitung-baris-2-baru">
+<h4>Langkah 2: Menghitung Baris 2 Baru<a class="headerlink" href="#langkah-2-menghitung-baris-2-baru" title="Link to this heading">#</a></h4>
+<p>Operasi yang dilakukan:<br />
+$<span class="math notranslate nohighlight">\(
+R_2 = R_2 + \frac{9}{5} R_3
+\)</span>$</p>
+<p>Sekarang kita hitung <strong>elemen-elemen baru pada <span class="math notranslate nohighlight">\(( R_2 )\)</span></strong>:</p>
+<p>\begin{array}{|l|l|l|l|}
+\hline Elemen &amp; Nilai Lama \left(R_2\right) &amp; \frac{9}{5} \times R_3 &amp; Hasil Baru \left(R_2+\frac{9}{5} R_3\right) \
+\hline(2,1) &amp; 0 &amp; \frac{9}{5} \times 0=0 &amp; 0+0=0 \
+\hline(2,2) &amp; 1 &amp; \frac{9}{5} \times 0=0 &amp; 1+0=1 \
+\hline(2,3) &amp; -\frac{9}{5} &amp; \frac{9}{5} \times 1=\frac{9}{5} &amp; -\frac{9}{5}+\frac{9}{5}=0 \
+\hline(2,4) &amp; \frac{1}{5} &amp; \frac{9}{5} \times-\frac{1}{2}=-\frac{9}{10} &amp; \frac{1}{5}-\frac{9}{10}=\frac{2}{10}-\frac{9}{10}=-\frac{7}{10} \
+\hline(2,5) &amp; -\frac{2}{5} &amp; \frac{9}{5} \times-\frac{1}{2}=-\frac{9}{10} &amp; -\frac{2}{5}-\left(-\frac{9}{10}\right)=-\frac{4}{10}+\frac{9}{10}=\frac{5}{10}=\frac{1}{2} \
+\hline(2,6) &amp; 0 &amp; \frac{9}{5} \times \frac{1}{2}=\frac{9}{10} &amp; $0+\frac{9}{10}=\frac{9}{10} \
+\hline
+\end{array}
+Jadi, <strong>baris 2 baru</strong> menjadi:</p>
+<div class="math notranslate nohighlight">
+\[
+\left( 0, 1, 0, -\frac{7}{10}, \frac{1}{2}, \frac{9}{10} \right)
+\]</div>
+<p>Hasil akhir matriks:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|ccc}
+1 &amp; 0 &amp; 0 &amp; \frac{13}{10} &amp; \frac{17}{10} &amp; -\frac{11}{10} \\
+0 &amp; 1 &amp; 0 &amp; -\frac{7}{10} &amp; \frac{1}{2} &amp; \frac{9}{10} \\
+0 &amp; 0 &amp; 1 &amp; -\frac{1}{2} &amp; -\frac{1}{2} &amp; \frac{1}{2}
+\end{array}
+\right]
+\end{split}\]</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sistem_persamaan_3variabel.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SISTEM PERSAMAAN LINEAR 3 VARIABEL</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-matriks-invers">Definisi Matriks Invers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syarat-suatu-matriks-memiliki-invers">Syarat Suatu Matriks Memiliki Invers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-3-persamaan">MATRIK 3 PERSAMAAN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diketahui-matriks-a">1. Diketahui Matriks <span class="math notranslate nohighlight">\({A}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membentuk-matriks-augmented-a-i">2. Membentuk Matriks Augmented [A | I]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-elemen-1-1-menjadi-1">3. Membuat Elemen <span class="math notranslate nohighlight">\((1,1)\)</span> Menjadi 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-elemen-di-kolom-1-baris-2-dan-3-menjadi-0">4. Membuat Elemen di Kolom 1 (Baris 2 dan 3) Menjadi 0</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-menjadikan-elemen-2-1">Langkah 1: Menjadikan Elemen (2,1)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-menjadikan-elemen-3-1-0">Langkah 2: Menjadikan Elemen (3,1) = 0</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-elemen-2-2-menjadi-1">5. Membuat Elemen <span class="math notranslate nohighlight">\((2,2)\)</span> Menjadi 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghilangkan-elemen-di-kolom-2-baris-1-dan-3">6. Menghilangkan Elemen di Kolom 2 (Baris 1 dan 3)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-menghitung-baris-1-baru">Langkah 1: Menghitung Baris 1 Baru</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-perhitungan-baris-3-baru">Langkah 2: Perhitungan Baris 3 Baru</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-elemen-3-3-menjadi-1">7. Membuat Elemen (3,3) Menjadi 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghilangkan-elemen-di-kolom-3-baris-1-dan-2">8. Menghilangkan Elemen di Kolom 3 (Baris 1 dan 2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Langkah 1: Menghitung Baris 1 Baru</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-menghitung-baris-2-baru">Langkah 2: Menghitung Baris 2 Baru</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 230411100013 IRNA KHALDA LUQYANA
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
