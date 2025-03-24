@@ -88,6 +88,7 @@ Penjelasan:
 Ambil baris kedua dikurangi baris pertama.
 
 
+$$
 \begin{array}{|l|l|l|l|}
 \hline Elemen & Nilai Lama \left(R_2\right) & Nilai R_1 & Hasil Baru \left(R_2-R_1\right) \\
 \hline(2,1) & 1 & 1 & 1-1=0 \\
@@ -98,12 +99,12 @@ Ambil baris kedua dikurangi baris pertama.
 \hline(2,6) & 0 & 0 & 0-0=0 \\
 \hline
 \end{array}
-
+$$
 
 Hasil baris 2 baru:
-$$
+$
 \left(0,-\frac{5}{2}, \frac{9}{2},-\frac{1}{2}, 1,0\right)
-$$
+$
 
 #### Langkah 2: Menjadikan Elemen (3,1) = 0
 Elemen ( 3,1 ) saat ini adalah 3.
@@ -116,6 +117,7 @@ $$
 Perhitungan Baris 3 Baru ( $\mathbf{R}_3$ )
 Setiap elemen baris $\mathbf{3}$ dikurangi $\mathbf{3 \times}$ baris 1 .
 
+$$
 \begin{array}{|l|l|l|l|}
 \hline Elemen & Nilai Lama \left(R_3\right) & 3 \times R_1 & Hasil Baru \left(R_3-3 R_1\right) \\
 \hline(3,1) & 3 & 3 \times 1=3 & 3-3=0 \\
@@ -126,11 +128,12 @@ Setiap elemen baris $\mathbf{3}$ dikurangi $\mathbf{3 \times}$ baris 1 .
 \hline(3,6) & 1 & 3 \times 0=0 & 1-0=1 \\
 \hline
 \end{array}
+$$
 
 Hasil baris 3 baru:
-$$
+$
 \left(0,-\frac{5}{2}, \frac{13}{2},-\frac{3}{2}, 0,1\right)
-$$
+$
 
  Hasil matriks setelah eliminasi:
 
@@ -151,7 +154,7 @@ Perhitungan Baris 2 Baru
 Kita lakukan pembagian untuk setiap elemen di baris 2:
 
 
-\begin{array}{|l|l|l|l|}
+$$\begin{array}{|l|l|l|l|}
 \hline Elemen & Nilai Lama \left(R_2\right) & Dibagi -5 / 2 & Hasil Baru \\
 \hline(2,1) & 0 & 0 \div(-5 / 2) & 0 \\
 \hline(2,2) & -\frac{5}{2} & \left(-\frac{5}{2}\right) \div\left(-\frac{5}{2}\right) & 1 \\
@@ -161,7 +164,7 @@ Kita lakukan pembagian untuk setiap elemen di baris 2:
 \hline(2,6) & 0 & 0 \div(-5 / 2) & 0 \\
 \hline
 \end{array}
-
+$$
 
 Hasil baris 2 setelah pembagian:
 
@@ -187,7 +190,7 @@ $$
 #### Langkah 1: Menghitung Baris 1 Baru
 Setiap elemen di baris 1 dikurangi $\frac{3}{2} \times$ baris 2 .
 
-\begin{array}{|l|l|l|l|}
+$$\begin{array}{|l|l|l|l|}
 \hline Elemen & Nilai Lama \left(R_1\right) & \frac{3}{2} \times R_2 & Hasil Baru \left(R_1-\frac{3}{2} R_2\right) \\
 \hline(1,1) & 1 & \frac{3}{2} \times 0=0 & 1-0=1 \\
 \hline(1,2) & \frac{3}{2} & \frac{3}{2} \times 1=\frac{3}{2} & \frac{3}{2}-\frac{3}{2}=0 \\
@@ -197,6 +200,7 @@ Setiap elemen di baris 1 dikurangi $\frac{3}{2} \times$ baris 2 .
 \hline(1,6) & 0 & \frac{3}{2} \times 0=0 & 0-0=0 \\
 \hline
 \end{array}
+$$
 
 Hasil baris 1 baru:
 
@@ -208,6 +212,7 @@ $$
 
 Setiap elemen di baris 3 ditambah $\frac{5}{2} \times$ baris 2 .
 
+$$
 \begin{array}{|l|l|l|l|}
 \hline Elemen & Nilai Lama \left(R_3\right) & \frac{5}{2} \times R_2 & Hasil Baru \left(R_3+\frac{5}{2} R_2\right) \\
 \hline(3,1) & 0 & \frac{5}{2} \times 0=0 & 0+0=0 \\
@@ -218,11 +223,12 @@ Setiap elemen di baris 3 ditambah $\frac{5}{2} \times$ baris 2 .
 \hline(3,6) & 1 & \frac{5}{2} \times 0=0 & 1+0=1 \\
 \hline
 \end{array}
+$$
 
 Hasil baris 3 baru:
-$$
+$
 (0,0,2 \mid-1,-1,1)
-$$
+$
 
 Hasil matriks:
 
@@ -239,7 +245,7 @@ $$
 
 Sekarang kita bagi setiap elemen di baris 3 dengan 2:
 
-\begin{array}{|l|l|l|l|}
+$$\begin{array}{|l|l|l|l|}
 \hline Elemen & Nilai Lama \left(R_3\right) & Dibagi 2 & Hasil Baru \\
 \hline(3,1) & 0 & 0 \div 2 & 0 \\
 \hline(3,2) & 0 & 0 \div 2 & 0 \\
@@ -249,16 +255,17 @@ Sekarang kita bagi setiap elemen di baris 3 dengan 2:
 \hline(3,6) & 1 & 1 \div 2 & \frac{1}{2} \\
 \hline
 \end{array}
+$$
 
 Hasil baris 3 baru:
-$$
+$
 \left(0,0,1,-\frac{1}{2},-\frac{1}{2}, \frac{1}{2}\right)
-$$
+$
 
 Hasil matriks:
-$$
+$
 \left[\begin{array}{ccc|ccc}1 & 0 & \frac{11}{5} & \frac{1}{5} & \frac{3}{5} & 0 \\ 0 & 1 & -\frac{9}{5} & \frac{1}{5} & -\frac{2}{5} & 0 \\ 0 & 0 & 1 & -\frac{1}{2} & -\frac{1}{2} & \frac{1}{2}\end{array}\right]
-$$
+$
 
 ### 8. Menghilangkan Elemen di Kolom 3 (Baris 1 dan 2)
 
@@ -269,11 +276,11 @@ Sekarang kita ingin **mengubah elemen (1,3) dan (2,3) menjadi 0**, yaitu:
 
 #### Langkah 1: Menghitung Baris 1 Baru
 Operasi yang dilakukan:
-$$R_1=R_1-\frac{11}{5} R_3$$
+$R_1=R_1-\frac{11}{5} R_3$
 
 Sekarang kita hitung **elemen-elemen baru pada $( R_1)$**:
 
-\begin{array}{|l|l|l|l|}
+$$\begin{array}{|l|l|l|l|}
 \hline Elemen & Nilai Lama \left(R_1\right) & \frac{11}{5} \times R_3 & Hasil Baru \left(R_1-\frac{11}{5} R_3\right) \\
 \hline(1,1) & 1 & \frac{11}{5} \times 0=0 & 1-0=1 \\
 \hline(1,2) & 0 & \frac{11}{5} \times 0=0 & 0-0=0 \\
@@ -283,6 +290,7 @@ Sekarang kita hitung **elemen-elemen baru pada $( R_1)$**:
 \hline(1,6) & 0 & \frac{11}{5} \times \frac{1}{2}=\frac{11}{10} & $0-\frac{11}{10}=-\frac{11}{10} \\
 \hline
 \end{array}
+$$
 
 Jadi, **baris 1 baru** menjadi:
 
@@ -293,13 +301,13 @@ $$
 
 #### Langkah 2: Menghitung Baris 2 Baru
 Operasi yang dilakukan:  
-$$
+$
 R_2 = R_2 + \frac{9}{5} R_3
-$$
+$
 
 Sekarang kita hitung **elemen-elemen baru pada $( R_2 )$**:
 
-\begin{array}{|l|l|l|l|}
+$$\begin{array}{|l|l|l|l|}
 \hline Elemen & Nilai Lama \left(R_2\right) & \frac{9}{5} \times R_3 & Hasil Baru \left(R_2+\frac{9}{5} R_3\right) \\
 \hline(2,1) & 0 & \frac{9}{5} \times 0=0 & 0+0=0 \\
 \hline(2,2) & 1 & \frac{9}{5} \times 0=0 & 1+0=1 \\
@@ -309,6 +317,7 @@ Sekarang kita hitung **elemen-elemen baru pada $( R_2 )$**:
 \hline(2,6) & 0 & \frac{9}{5} \times \frac{1}{2}=\frac{9}{10} & $0+\frac{9}{10}=\frac{9}{10} \\
 \hline
 \end{array}
+$$
 Jadi, **baris 2 baru** menjadi:
 
 $$
