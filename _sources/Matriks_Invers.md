@@ -599,47 +599,37 @@ $$
 ---
 
 #### 12. Hitung Setiap Komponen
-Hitung nilai setiap $X_i$:
+HHitung nilai setiap $X_i$:
+
+
 
 $$
-x_1 = (-0.675) + (2.2546) + (0.8092) + (0) = 2.3888
-$$
-
-$$
-x_2 = (3.4628) + (3.9645) + (2.5412) + (0) = 9.9685
-$$
-
-$$
-x_3 = (0.495) + (-0.1167) + (-0.2364) + (0) = 0.1419
+x_1 = (-0.3375 \times 2) + (2.2546 \times 1) + (0.2023 \times 4) + (-0.1443 \times 0) = 1.0000
 $$
 
 $$
-x_4 = (0.333) + (-0.2976) + (-0.2564) + (0) = -0.221
+x_2 = (1.7314 \times 2) + (3.9645 \times 1) + (0.6353 \times 4) + (-0.6585 \times 0)  = 0.0000
 $$
 
----
-
-### 13. Tuliskan hasil perkalian:
-
 $$
-X =
-\begin{bmatrix} 
-2.3888 \\ 
-9.9685 \\ 
-0.1419 \\ 
--0.221 
-\end{bmatrix}
+x_3 = (0.2475 \times 2) + (-0.1167 \times 1) + (-0.0591 \times 4) + (0.1121 \times 0)  = 0.0000
 $$
 
-Jadi, **hasil akhirnya adalah**:
+$$
+x_4 = (0.1665 \times 2) + (-0.2976 \times 1) + (-0.0641 \times 4) + (0.0737 \times 0)  = 0.0000
+$$
+
+
+Hasil perkalian:
 
 $$
 X =
 \begin{bmatrix} 
-2.39 \\ 
-9.97 \\ 
-0.14 \\ 
--0.22 
+1 \\ 
+0 \\ 
+0 \\ 
+0 
 \end{bmatrix}
 $$
+
 
