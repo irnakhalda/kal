@@ -599,7 +599,7 @@ $$
 ---
 
 #### 12. Hitung Setiap Komponen
-HHitung nilai setiap $X_i$:
+Hitung nilai setiap $X_i$:
 
 
 
