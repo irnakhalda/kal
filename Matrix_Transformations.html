@@ -1,0 +1,947 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Matrix Transformations &#8212; Komputasi Aljabar Linear B</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Matrix_Transformations';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="MATRIKS INVERS" href="Matriks_Invers.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/irnaa.jpg" class="logo__image only-light" alt="Komputasi Aljabar Linear B - Home"/>
+    <img src="_static/irnaa.jpg" class="logo__image only-dark pst-js-only" alt="Komputasi Aljabar Linear B - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to materi Komputasi Aljabar Linear
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sistem_persamaan_3variabel.html">SISTEM PERSAMAAN LINEAR 3 VARIABEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matriks_Invers.html">MATRIKS INVERS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Matrix Transformations</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FMatrix_Transformations.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Matrix_Transformations.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Matrix Transformations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a1-matriks-translasi">A1. Matriks Translasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a2-matriks-rotasi">A2. Matriks Rotasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a3-matriks-skala">A3. Matriks Skala</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-matriks-transformasi-komposit-gabungan">B. Matriks Transformasi Komposit (Gabungan)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b1-translasi">B1. Translasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b2-scaling">B2. Scaling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b3-rotasi">B3. Rotasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b4-rotasi-terhadap-pivot-point">B4. Rotasi Terhadap Pivot Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b5-scaling-terhadap-fixed-point">B5. Scaling Terhadap Fixed Point</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-lain">7. Transformasi Lain</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-refleksi">A. Refleksi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a1-refleksi-terhadap-sumbu-x">A1. Refleksi Terhadap Sumbu X</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a2-refleksi-terhadap-sumbu-y">A2. Refleksi Terhadap Sumbu y</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a3-refleksi-terhadap-sumbu-tegak-lurus-bidang-xy">A3. Refleksi Terhadap Sumbu Tegak Lurus Bidang XY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a4-refleksi-terhadap-garis-diagonal-y-x">A4. Refleksi Terhadap Garis Diagonal Y = X</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-latihan">SOAL LATIHAN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelompok-latihan"><strong>Kelompok Latihan</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-pengerjaan"><strong>Langkah Pengerjaan:</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-1">Soal 1:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-2">Soal 2:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-5">Soal 5:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-6">Soal 6:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <hr class="docutils" />
+<p>title: Matrix_Transformations</p>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="matrix-transformations">
+<h1>Matrix Transformations<a class="headerlink" href="#matrix-transformations" title="Link to this heading">#</a></h1>
+<p>Kombinasi bentuk perkalian dan translasi untuk transformasi geometri 2D ke
+dalam suatu matriks dilakukan dengan mengubah matriks 2 x 2 menjadi
+matriks 3 x 3.
+Untuk itu maka koordinat cartesian (x,y) dinyatakan dalam bentuk koordinat
+homogen (xh, yh, h), dimana :
+x = xh / h y = yh / h
+Dimana untuk geometri 2D parameter h ≠ 0 atau biasanya h = 1, sehingga
+setiap posisi koordinat 2D dapat dinyatakan dengan (x, y, 1).
+Untuk transformasi 3D biasanya parameter h ≠ 1.Dengan menyatakan posisi titik dalam koordinat homogen, semua transformasi geometri dinyatakan dalam bentuk matriks. Koordinat dinyatakan dalam tiga elemen vektor kolom dan operasi transformasi ditulis dengan matriks 3 x 3.</p>
+<section id="a1-matriks-translasi">
+<h2>A1. Matriks Translasi<a class="headerlink" href="#a1-matriks-translasi" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{l}
+x^{\prime} \\
+y^{\prime} \\
+1
+\end{array}\right]=\left[\begin{array}{lll}
+1 &amp; 0 &amp; t_x \\
+0 &amp; 1 &amp; t_y \\
+0 &amp; 0 &amp; 1
+\end{array}\right] \cdot\left[\begin{array}{c}
+x \\
+y \\
+1
+\end{array}\right] \quad \text { atau } \quad P^{\prime}=T\left(t_x, t_y\right) \cdot P
+\end{split}\]</div>
+</section>
+<section id="a2-matriks-rotasi">
+<h2>A2. Matriks Rotasi<a class="headerlink" href="#a2-matriks-rotasi" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{c}
+x^{\prime} \\
+y^{\prime} \\
+1
+\end{array}\right]=\left[\begin{array}{ccc}
+\cos \theta &amp; -\sin \theta &amp; 0 \\
+\sin \theta &amp; \cos \theta &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right] \cdot\left[\begin{array}{l}
+\mathrm{x} \\
+\mathrm{y} \\
+1
+\end{array}\right] \quad \text { atau } \quad \mathbf{P}^{\prime}=\mathbf{R}({\theta}) \cdot \mathbf{P}
+\end{split}\]</div>
+</section>
+<section id="a3-matriks-skala">
+<h2>A3. Matriks Skala<a class="headerlink" href="#a3-matriks-skala" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{l}
+x^{\prime} \\
+y^{\prime} \\
+1
+\end{array}\right]=\left[\begin{array}{ccc}
+s_x &amp; 0 &amp; 0 \\
+0 &amp; s_y &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right] \cdot\left[\begin{array}{l}
+x \\
+y \\
+1
+\end{array}\right]
+\end{split}\]</div>
+<p>atau <span class="math notranslate nohighlight">\(\quad P^{\prime}=\mathbf{S}\left(S_x, S_y\right) \cdot P\)</span></p>
+</section>
+<section id="b-matriks-transformasi-komposit-gabungan">
+<h2>B. Matriks Transformasi Komposit (Gabungan)<a class="headerlink" href="#b-matriks-transformasi-komposit-gabungan" title="Link to this heading">#</a></h2>
+<p>Dengan bentuk matriks seperti yang telah dibahas sebelumnya, setiap urutan transformasi dapat dibuat sebagai matriks transformasi komposit dengan menghitung produk matriks transformasi individu.
+Bentuk matriks transformasi komposit diperoleh dengan melakukan perkalian matriks dari kanan ke kiri :</p>
+<section id="b1-translasi">
+<h3>B1. Translasi<a class="headerlink" href="#b1-translasi" title="Link to this heading">#</a></h3>
+<p>Bila dua vektor translasi masing-masing ( <span class="math notranslate nohighlight">\(\mathrm{t}_{x 1}, \mathrm{t}_{\mathrm{y} 1}\)</span> ) dan ( <span class="math notranslate nohighlight">\(\mathrm{t}_{\mathrm{x} 2}, \mathrm{t}_{\mathrm{y} 2}\)</span> ) digunakan pada posisi koordinat P , maka transformasi akhir <span class="math notranslate nohighlight">\(\mathrm{P}^{\prime}\)</span> dapat dihitung dengan:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+P^{\prime}= &amp; T\left(t_x 2, t_y 2\right) \cdot\left\{T\left(t_x 1, t_y 1\right) \cdot P\right\} \\
+&amp; \left\{T\left(t_x, t_y\right) \cdot T\left(t_{x 1}, t_{y 1}\right)\right\} . P
+\end{aligned}
+\end{split}\]</div>
+<p>Dimana:
+P dan P’ : Vektor kolom koordinat homogen</p>
+<p>Dalam bentuk matriks:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{ccc}
+1 &amp; 0 &amp; t_{\mathrm{x} 2} \\
+0 &amp; 1 &amp; \mathrm{t}_{\mathrm{y} 2} \\
+0 &amp; 0 &amp; 1
+\end{array}\right] \cdot\left[\begin{array}{ccc}
+1 &amp; 0 &amp; \mathrm{t}_{\mathrm{x} 1} \\
+0 &amp; 1 &amp; \mathrm{t}_{\mathrm{y} 1} \\
+0 &amp; 0 &amp; 1
+\end{array}\right]=\left[\begin{array}{ccc}
+1 &amp; 0 &amp; \mathrm{t}_{\mathrm{x} 1}+\mathrm{t}_{\mathrm{x} 2} \\
+0 &amp; 1 &amp; \mathrm{t}_{\mathrm{y} 1}+\mathrm{t}_{\mathrm{y} 2} \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\end{split}\]</div>
+<p>atau</p>
+<div class="math notranslate nohighlight">
+\[
+T\left(t_x, t_y\right) \cdot T\left(t_{x 1}, t_y\right)=T\left(t_{x 1}+t_{x 2}, t_{y 1}+t_y\right)
+\]</div>
+</section>
+<section id="b2-scaling">
+<h3>B2. Scaling<a class="headerlink" href="#b2-scaling" title="Link to this heading">#</a></h3>
+<p>Bila operasi penskalaan dilakukan sebanyak dua kali, maka akan menghasilkan matriks skala komposit sebagai berikut:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{ccc}
+\mathrm{s}_{\mathrm{x} 2} &amp; 0 &amp; 0 \\
+0 &amp; \mathrm{~s}_{\mathrm{y} 2} &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right] \cdot\left[\begin{array}{ccc}
+\mathrm{s}_{\mathrm{x} 1} &amp; 0 &amp; 0 \\
+0 &amp; \mathrm{~s}_{\mathrm{y} 1} &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]=\left[\begin{array}{ccc}
+\mathrm{s}_{\mathrm{x} 1} \cdot \mathrm{~s}_{\mathrm{x} 2} &amp; 0 &amp; 0 \\
+0 &amp; \mathrm{~s}_{\mathrm{y} 1} \cdot \mathrm{~s}_{\mathrm{y} 2} &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\end{split}\]</div>
+<p>atau</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{S}\left(S_{x 2}, S_{y 2}\right) \cdot S\left(S_{x 1}, S_{y 1}\right)=S\left(S_{x 1} \cdot S_{x 2}, S_{y 1} \cdot S_{y 2}\right)
+\]</div>
+</section>
+<section id="b3-rotasi">
+<h3>B3. Rotasi<a class="headerlink" href="#b3-rotasi" title="Link to this heading">#</a></h3>
+<p>Bila rotasi dilakukan sebanyak dua kali terhadap titik P, maka posisi transformasi akhir P’ dapat dinyatakan dengan:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+P^{\prime}= &amp; R\left(\theta_2\right) \cdot\left\{R\left(\theta_1\right) \cdot P\right\} \\
+&amp; \left\{R\left(\theta_2\right) \cdot R\left(\theta_1\right)\right\} \cdot P \quad \operatorname{dimana} \quad R\left(\theta_2\right) \cdot R\left(\theta_1\right)=R\left(\theta_1+\theta_2\right)
+\end{aligned}
+\end{split}\]</div>
+<p>Sehingga</p>
+<div class="math notranslate nohighlight">
+\[
+P^{\prime}=R\left(\theta_1+\theta_2\right) \cdot P
+\]</div>
+</section>
+<section id="b4-rotasi-terhadap-pivot-point">
+<h3>B4. Rotasi Terhadap Pivot Point<a class="headerlink" href="#b4-rotasi-terhadap-pivot-point" title="Link to this heading">#</a></h3>
+<p>Pada paket aplikasi grafika yang hanya mampu memutar objek menurut koordinat asal, yaitu terhadap titik pusat koordinat, dapat dibuat rotasi yang dilakukan dari titik tertentu, pivot point ( <span class="math notranslate nohighlight">\(\mathrm{X} p, \mathrm{y}_{\mathrm{p}}\)</span> ) maka proses transformasi dilakukan dengan cara translasi-rotasi-translasi, prosedurnya adalah:</p>
+<ol class="arabic simple">
+<li><p>Pindahkan objek sedemikian sehingga posisi pivot point berada pada titik pusat (0, 0).</p></li>
+<li><p>Putar objek pada titik pusat.</p></li>
+<li><p>Pindahkan objek dari titik pusat ke posisi semula.</p></li>
+</ol>
+<p><img alt="image" src="https://hackmd.io/_uploads/r1m6fUSCyg.png" /></p>
+</section>
+<section id="b5-scaling-terhadap-fixed-point">
+<h3>B5. Scaling Terhadap Fixed Point<a class="headerlink" href="#b5-scaling-terhadap-fixed-point" title="Link to this heading">#</a></h3>
+<p>Proses penskalaan (scaling) terhadap sebuat titik tertentu, fixed point ( <span class="math notranslate nohighlight">\(\mathrm{x}_{\mathrm{f}}, \mathrm{y}_{\mathrm{f}}\)</span> ) menggunakan fungsi skala adalah sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p>Pindahkan objek sedemikian sehingga posisi fixed point berhimpit dengan titik pusat (0, 0).</p></li>
+<li><p>Ubah skala objek pada titik pusat.</p></li>
+<li><p>Pindahkan objek dari titik pusat ke posisi semula.
+Bentuk matriksnya adalah:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{ccc}
+1 &amp; 0 &amp; x_f \\
+0 &amp; 1 &amp; y_f \\
+0 &amp; 0 &amp; 1
+\end{array}\right] \cdot\left[\begin{array}{ccc}
+s_x &amp; 0 &amp; 0 \\
+0 &amp; s_y &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right] \cdot\left[\begin{array}{ccc}
+1 &amp; 0 &amp; -x_f \\
+0 &amp; 1 &amp; -y_f \\
+0 &amp; 0 &amp; 1
+\end{array}\right]=\left[\begin{array}{ccc}
+s_x &amp; 0 &amp; x_f\left(1-s_x\right) \\
+0 &amp; s_y &amp; y_f\left(1-s_y\right) \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\end{split}\]</div>
+<p>atau dapat ditulis:</p>
+<div class="math notranslate nohighlight">
+\[
+T\left(X_f, y_f\right) \cdot S\left(S_x, S_y\right) \cdot T\left(-x_f,-y_f\right)=S\left(x_f, y_f, S_x, S_y\right)
+\]</div>
+<p><img alt="image" src="https://hackmd.io/_uploads/rJ7vzLSAJe.png" /></p>
+</section>
+</section>
+<section id="transformasi-lain">
+<h2>7. Transformasi Lain<a class="headerlink" href="#transformasi-lain" title="Link to this heading">#</a></h2>
+<p>Transformasi dasar seperti translasi, penskalaan dan rotasi merupakan
+fasilitas yang dimiliki setiap Aplikasi Grafika. Beberapa paket biasanya juga
+dilengkapi dengan beberapa tambahan transformasi yang berguna untuk
+aplikasi tertentu.</p>
+<section id="a-refleksi">
+<h3>A. Refleksi<a class="headerlink" href="#a-refleksi" title="Link to this heading">#</a></h3>
+<p>Refleksi adalah transformasi yang menghasilkan pencerminan citra dari suatu
+objek. Citra hasil pencerminan untuk refleksi 2D dibuat relatif terhadap sumbu
+refleksi dengan cara memutar objek 180 terhadap sumbu refleksi.
+Sumbu refleksi dapat dipilih sembarang garis pada bidang xy.</p>
+</section>
+</section>
+<section id="a1-refleksi-terhadap-sumbu-x">
+<h2>A1. Refleksi Terhadap Sumbu X<a class="headerlink" href="#a1-refleksi-terhadap-sumbu-x" title="Link to this heading">#</a></h2>
+<p>Refleksi terhadap sumbu <span class="math notranslate nohighlight">\(x\)</span> (horizontal), <span class="math notranslate nohighlight">\(\mathrm{y}=0\)</span> dinyatakan dengan matriks:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\end{split}\]</div>
+<p><img alt="image" src="https://hackmd.io/_uploads/rkI4fLSCyl.png" /></p>
+<p>llustrasi refleksi terhadap sumbu x</p>
+</section>
+<section id="a2-refleksi-terhadap-sumbu-y">
+<h2>A2. Refleksi Terhadap Sumbu y<a class="headerlink" href="#a2-refleksi-terhadap-sumbu-y" title="Link to this heading">#</a></h2>
+<p>Refleksi terhadap sumbu y (vertikal), <span class="math notranslate nohighlight">\(\mathrm{x}=0\)</span> dinyatakan dengan matriks:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{ccc}
+-1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\end{split}\]</div>
+<p><img alt="image" src="https://hackmd.io/_uploads/SJw4Q8HRkx.png" /></p>
+</section>
+<section id="a3-refleksi-terhadap-sumbu-tegak-lurus-bidang-xy">
+<h2>A3. Refleksi Terhadap Sumbu Tegak Lurus Bidang XY<a class="headerlink" href="#a3-refleksi-terhadap-sumbu-tegak-lurus-bidang-xy" title="Link to this heading">#</a></h2>
+<p>Refleksi terhadap sumbu yang tegak lurus bidang xy dan melalui titik pusat dinyatakan dengan matriks:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{ccc}
+-1 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\end{split}\]</div>
+<p><img alt="image" src="https://hackmd.io/_uploads/HJ75QUSRkl.png" /></p>
+</section>
+<section id="a4-refleksi-terhadap-garis-diagonal-y-x">
+<h2>A4. Refleksi Terhadap Garis Diagonal Y = X<a class="headerlink" href="#a4-refleksi-terhadap-garis-diagonal-y-x" title="Link to this heading">#</a></h2>
+<p>Refleksi terhadap garis diagonal, y = x dinyatakan dengan matriks:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{ccc}
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\end{split}\]</div>
+<p><img alt="image" src="https://hackmd.io/_uploads/H13-VIBAyg.png" /></p>
+<p>Terhadap sumbu x
+• X’ = X
+• Y’ = -Y
+Terhadap sumbu y
+• X’ = -X
+• Y’ = Y
+Terhadap sumbu y = x
+• X’ = Y
+• Y’ = X
+Terhadap sumbu y = -x
+• X’ = -Y
+• Y’ = -X</p>
+</section>
+<section id="soal-latihan">
+<h2>SOAL LATIHAN<a class="headerlink" href="#soal-latihan" title="Link to this heading">#</a></h2>
+<section id="kelompok-latihan">
+<h3><strong>Kelompok Latihan</strong><a class="headerlink" href="#kelompok-latihan" title="Link to this heading">#</a></h3>
+<p>Diberikan sebuah matriks <strong>A</strong>. Buatlah sketsa dari <strong>𝑥⃗</strong>, <strong>𝑦⃗</strong>, <strong>𝐴𝑥⃗</strong>, dan <strong>𝐴𝑦⃗</strong> pada sumbu Kartesius yang sama, dengan:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{x} = \begin{bmatrix} 1 \\ 1 \end{bmatrix} \quad \text{dan} \quad \vec{y} = \begin{bmatrix} -1 \\ 2 \end{bmatrix}
+\end{split}\]</div>
+<section id="id1">
+<h4>1.<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix} 1 &amp; -1 \\ 2 &amp; 3 \end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="id2">
+<h4>2.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix} 2 &amp; 0 \\ -1 &amp; 3 \end{bmatrix}
+\end{split}\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="langkah-pengerjaan">
+<h3><strong>Langkah Pengerjaan:</strong><a class="headerlink" href="#langkah-pengerjaan" title="Link to this heading">#</a></h3>
+<section id="soal-1">
+<h4>Soal 1:<a class="headerlink" href="#soal-1" title="Link to this heading">#</a></h4>
+<p>Hitung <span class="math notranslate nohighlight">\(A\vec{x}\)</span> dan <span class="math notranslate nohighlight">\(A\vec{y}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A\vec{x} = \begin{bmatrix} 1 &amp; -1 \\ 2 &amp; 3 \end{bmatrix} \begin{bmatrix} 1 \\ 1 \end{bmatrix} = \begin{bmatrix} 1 - 1 \\ 2 + 3 \end{bmatrix} = \begin{bmatrix} 0 \\ 5 \end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A\vec{y} = \begin{bmatrix} 1 &amp; -1 \\ 2 &amp; 3 \end{bmatrix} \begin{bmatrix} -1 \\ 2 \end{bmatrix} = \begin{bmatrix} -1 - 2 \\ -2 + 6 \end{bmatrix} = \begin{bmatrix} -3 \\ 4 \end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="soal-2">
+<h4>Soal 2:<a class="headerlink" href="#soal-2" title="Link to this heading">#</a></h4>
+<p><em>Hitung <span class="math notranslate nohighlight">\(A\vec{x}\)</span>:</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A\vec{x} = \begin{bmatrix} 2 &amp; 0 \\ -1 &amp; 3 \end{bmatrix} \begin{bmatrix} 1 \\ 1 \end{bmatrix} = 
+\begin{bmatrix} 2(1) + 0(1) \\ -1(1) + 3(1) \end{bmatrix} = 
+\begin{bmatrix} 2 \\ 2 \end{bmatrix}
+\end{split}\]</div>
+<p><em>Hitung <span class="math notranslate nohighlight">\(A\vec{y}\)</span>:</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A\vec{y} = \begin{bmatrix} 2 &amp; 0 \\ -1 &amp; 3 \end{bmatrix} \begin{bmatrix} -1 \\ 2 \end{bmatrix} = 
+\begin{bmatrix} 2(-1) + 0(2) \\ -1(-1) + 3(2) \end{bmatrix} = 
+\begin{bmatrix} -2 \\ 7 \end{bmatrix}
+\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section id="soal-5">
+<h4>Soal 5:<a class="headerlink" href="#soal-5" title="Link to this heading">#</a></h4>
+<p>Dari gambar, terlihat bahwa:</p>
+<ul class="simple">
+<li><p>Vektor (1,0) dipetakan ke vektor <em>(1,2)</em>.</p></li>
+<li><p>Vektor (0,1) dipetakan ke vektor <em>(2,3)</em>.</p></li>
+</ul>
+<p>Maka matriks transformasinya adalah:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A_5 = \begin{bmatrix}
+1 &amp; 2 \\
+2 &amp; 3 \\
+\end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Hasil akhir:
+$<span class="math notranslate nohighlight">\(
+A = \begin{bmatrix}
+1 &amp; 2 \\
+2 &amp; 3 \\
+\end{bmatrix}
+\)</span>$</p></li>
+</ul>
+</section>
+<section id="soal-6">
+<h4>Soal 6:<a class="headerlink" href="#soal-6" title="Link to this heading">#</a></h4>
+<p>Dari gambar, terlihat bahwa:</p>
+<ul class="simple">
+<li><p>Vektor (1,0) dipetakan ke vektor <em>(1,1)</em>.</p></li>
+<li><p>Vektor (0,1) dipetakan ke vektor <em>(-1,1)</em>.</p></li>
+</ul>
+<p>Maka matriks transformasinya adalah:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A_6 = \begin{bmatrix}
+1 &amp; -1 \\
+1 &amp; 1 \\
+\end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Hasil akhir:
+$<span class="math notranslate nohighlight">\(
+A = \begin{bmatrix}
+1 &amp; -1 \\
+1 &amp; 1 \\
+\end{bmatrix}
+\)</span>$</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Matriks_Invers.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MATRIKS INVERS</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a1-matriks-translasi">A1. Matriks Translasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a2-matriks-rotasi">A2. Matriks Rotasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a3-matriks-skala">A3. Matriks Skala</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-matriks-transformasi-komposit-gabungan">B. Matriks Transformasi Komposit (Gabungan)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b1-translasi">B1. Translasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b2-scaling">B2. Scaling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b3-rotasi">B3. Rotasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b4-rotasi-terhadap-pivot-point">B4. Rotasi Terhadap Pivot Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b5-scaling-terhadap-fixed-point">B5. Scaling Terhadap Fixed Point</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-lain">7. Transformasi Lain</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-refleksi">A. Refleksi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a1-refleksi-terhadap-sumbu-x">A1. Refleksi Terhadap Sumbu X</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a2-refleksi-terhadap-sumbu-y">A2. Refleksi Terhadap Sumbu y</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a3-refleksi-terhadap-sumbu-tegak-lurus-bidang-xy">A3. Refleksi Terhadap Sumbu Tegak Lurus Bidang XY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a4-refleksi-terhadap-garis-diagonal-y-x">A4. Refleksi Terhadap Garis Diagonal Y = X</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-latihan">SOAL LATIHAN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelompok-latihan"><strong>Kelompok Latihan</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-pengerjaan"><strong>Langkah Pengerjaan:</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-1">Soal 1:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-2">Soal 2:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-5">Soal 5:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-6">Soal 6:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 230411100013 IRNA KHALDA LUQYANA
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
