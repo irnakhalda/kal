@@ -355,13 +355,6 @@ A_5 = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-- Hasil akhir:
-  $
-  A = \begin{bmatrix}
-  1 & 2 \\
-  2 & 3 \\
-  \end{bmatrix}
-  $
 
 
 #### Soal 6:
@@ -380,12 +373,5 @@ A_6 = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-- Hasil akhir:
- $
-  A = \begin{bmatrix}
-  1 & -1 \\
-  1 & 1 \\
-  \end{bmatrix}
- $
 ---
 
